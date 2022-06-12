@@ -15,12 +15,13 @@ import Layout from '../../components/Layout'
 export default function Task ({ id, staticTask }) {
 
   const router = useRouter()
-
   const { data: task, mutate } = useSWR(
-    `${process.env.NEXT_PUBLIC_RESTAPI_URL}/api/detail-task/${id}/`, fetcher, {
+    `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/detail-task/${id}`,
+    fetcher,
+    {
       fallbackData: staticTask,
-    })
-
+    },
+  )
   useEffect(() => {
     mutate()
   }, [])
